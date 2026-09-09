@@ -1,0 +1,12 @@
+# Claude Code local tooling config (dev server config, local permissions)
+.claude/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Original, full-resolution photo uploads (1.5-3.8MB each). Only the
+# resized/compressed copies in pics_09.07.2026/web/ are used by the site.
+assets/img/pics_09.07.2026/*.HEIC
+assets/img/pics_09.07.2026/*.jpg
+assets/img/pics_09.07.2026/*.jpeg
