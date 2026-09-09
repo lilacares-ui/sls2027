@@ -421,6 +421,7 @@ p { margin: 0 0 1em; color: #33404d; }
 .cta-banner h2 { color: var(--blue-dark); margin: 0; max-width: 560px; position: relative; z-index: 1; }
 .cta-banner .btn-blue:hover { background: var(--blue-dark); }
 .cta-banner a.btn { position: relative; z-index: 1; }
+@media (max-width: 640px) { .cta-banner { padding: 34px 24px; text-align: center; justify-content: center; } }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--blue-dark); color: rgba(255,255,255,0.78); }
