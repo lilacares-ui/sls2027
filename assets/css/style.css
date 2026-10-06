@@ -273,9 +273,9 @@ p { margin: 0 0 1em; color: #33404d; }
 .hero-campanile {
   position: absolute;
   bottom: 0;
-  left: 5.7%;
+  left: max(60px, calc((100% - 1112px) / 4));
   transform: translateX(-50%);
-  height: 80%;
+  height: 100%;
   width: auto;
   max-width: none;
   opacity: 0.38;
@@ -491,6 +491,7 @@ p { margin: 0 0 1em; color: #33404d; }
   position: relative;
   overflow: hidden;
 }
+.page-hero .wrap { position: relative; z-index: 2; }
 .page-hero .eyebrow { color: var(--coral); }
 .page-hero h1 { color: var(--white); font-size: clamp(2.1rem, 4.2vw, 3rem); }
 .page-hero p { color: rgba(255,255,255,0.82); max-width: 620px; }
