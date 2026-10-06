@@ -268,6 +268,24 @@ p { margin: 0 0 1em; color: #33404d; }
   z-index: 1;
   user-select: none;
 }
+/* Campanile line drawing is white on black; "screen" blending drops the black
+   so only the white strokes show over the blue. */
+.hero-campanile {
+  position: absolute;
+  bottom: 0;
+  left: 5.7%;
+  transform: translateX(-50%);
+  height: 80%;
+  width: auto;
+  max-width: none;
+  opacity: 0.38;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+@media (max-width: 1200px) { .hero-campanile { opacity: 0.2; } }
+@media (max-width: 900px) { .hero-campanile { display: none; } }
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -425,7 +443,21 @@ p { margin: 0 0 1em; color: #33404d; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--blue-dark); color: rgba(255,255,255,0.78); }
-.footer-top { padding: 60px 0 30px; }
+.footer-top { position: relative; padding: 60px 0 30px; }
+.footer-campanile {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  max-width: none;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 760px) { .footer-campanile { display: none; } }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 34px; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; gap: 26px; text-align: center; } }
