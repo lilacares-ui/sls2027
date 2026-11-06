@@ -317,7 +317,7 @@ p { margin: 0 0 1em; color: #33404d; }
 
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-art { order: -1; max-width: 320px; margin: 0 auto 10px; }
+  .hero-art { order: -1; width: 100%; max-width: 400px; margin: 0 auto 10px; }
   .hero-watermark { font-size: 12rem; opacity: 0.6; }
 }
 
