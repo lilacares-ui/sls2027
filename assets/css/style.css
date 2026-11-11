@@ -658,6 +658,7 @@ p { margin: 0 0 1em; color: #33404d; }
 }
 
 /* Per-sponsor photo carousel: one photo at a time, swipe or use arrows/dots. */
+.sponsor-carousel { max-width: 540px; margin: 0 auto; }
 .sc-viewport { position: relative; }
 .sc-track {
   display: flex;
