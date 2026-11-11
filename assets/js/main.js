@@ -73,6 +73,42 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rightArrow) rightArrow.addEventListener('click', () => jump(1));
   }
 
+  // Sponsor photo carousels: snap-scrolling track with arrows and dots.
+  document.querySelectorAll('.sponsor-carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.sc-track');
+    const slides = track.querySelectorAll('img');
+    const dotsWrap = carousel.querySelector('.sc-dots');
+    const prev = carousel.querySelector('.sc-prev');
+    const next = carousel.querySelector('.sc-next');
+
+    function current() { return Math.round(track.scrollLeft / track.clientWidth); }
+    function goTo(i) {
+      const last = slides.length - 1;
+      const index = i < 0 ? last : i > last ? 0 : i;
+      track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+    }
+
+    if (slides.length < 2) {
+      [prev, next, dotsWrap].forEach((el) => el && (el.hidden = true));
+      return;
+    }
+
+    const dots = [...slides].map((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Show photo ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+    function syncDots() { dots.forEach((d, i) => d.classList.toggle('active', i === current())); }
+    track.addEventListener('scroll', syncDots, { passive: true });
+    syncDots();
+
+    prev.addEventListener('click', () => goTo(current() - 1));
+    next.addEventListener('click', () => goTo(current() + 1));
+  });
+
   const copyBtn = document.getElementById('copy-sponsor-email');
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
