@@ -73,6 +73,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rightArrow) rightArrow.addEventListener('click', () => jump(1));
   }
 
+  // Home page "thank you sponsors" popup: shown once per browser session.
+  const sponsorPopup = document.getElementById('sponsor-popup');
+  if (sponsorPopup && typeof sponsorPopup.showModal === 'function') {
+    const STORAGE_KEY = 'sls-sponsor-popup-seen';
+    let seen = false;
+    try { seen = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+
+    if (!seen) {
+      setTimeout(() => {
+        sponsorPopup.showModal();
+        try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+      }, 1200);
+    }
+
+    sponsorPopup.querySelectorAll('.popup-close, .popup-dismiss').forEach((btn) => {
+      btn.addEventListener('click', () => sponsorPopup.close());
+    });
+    // A click on the dimmed backdrop lands on the <dialog> element itself.
+    sponsorPopup.addEventListener('click', (e) => { if (e.target === sponsorPopup) sponsorPopup.close(); });
+  }
+
   // Sponsor photo carousels: snap-scrolling track with arrows and dots.
   document.querySelectorAll('.sponsor-carousel').forEach((carousel) => {
     const track = carousel.querySelector('.sc-track');
