@@ -562,6 +562,22 @@ p { margin: 0 0 1em; color: #33404d; }
 .pic-arrow-left { left: -14px; }
 .pic-arrow-right { right: -14px; }
 
+/* ---------- Home page keynote speaker ---------- */
+.card.keynote-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 48px; align-items: start; padding: 44px; }
+.keynote-side { position: sticky; top: 100px; display: grid; gap: 16px; }
+.keynote-photo { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center 30%; border-radius: var(--radius); box-shadow: var(--shadow); }
+.keynote-body .eyebrow { margin-bottom: 14px; }
+.keynote-name { margin: 0 0 12px; font-size: clamp(2rem, 3.4vw, 2.6rem); }
+.card.keynote-card p.keynote-role { margin: 0 0 24px; padding-left: 16px; border-left: 3px solid var(--coral); font-size: 1rem; color: #33404d; }
+.keynote-role span { display: block; }
+.keynote-role span + span { margin-top: 4px; }
+.card.keynote-card .keynote-body p:not(.eyebrow):not(.keynote-role) { margin: 0 0 16px; font-size: 1rem; }
+.keynote-body b { color: var(--blue); font-weight: 600; }
+@media (max-width: 860px) {
+  .card.keynote-card { grid-template-columns: 1fr; gap: 28px; padding: 30px 24px; }
+  .keynote-side { position: static; max-width: 280px; margin: 0 auto; width: 100%; }
+}
+
 /* ---------- Home page sponsor popup ---------- */
 .btn-ghost { background: transparent; color: var(--blue); border-color: var(--line); }
 .btn-ghost:hover { background: var(--fog); border-color: var(--blue); }
