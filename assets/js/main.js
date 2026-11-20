@@ -73,6 +73,49 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rightArrow) rightArrow.addEventListener('click', () => jump(1));
   }
 
+  // YouTube embeds: a local thumbnail stands in until needed, so the page doesn't
+  // contact YouTube on load. data-autoplay videos start muted and looping once
+  // scrolled into view (unless the visitor prefers reduced motion); others play on click.
+  const videoEmbeds = document.querySelectorAll('.video-embed[data-video-id]');
+  if (videoEmbeds.length) {
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function mountVideo(embed, mutedLoop) {
+      const frame = embed.querySelector('.video-frame');
+      if (!frame || frame.querySelector('iframe')) return;
+      const id = embed.dataset.videoId;
+      const params = new URLSearchParams({ autoplay: '1', playsinline: '1', rel: '0', modestbranding: '1' });
+      if (embed.dataset.start) params.set('start', embed.dataset.start);
+      if (mutedLoop) { params.set('mute', '1'); params.set('loop', '1'); params.set('playlist', id); }
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?' + params.toString();
+      iframe.title = embed.dataset.title || 'Video';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.replaceChildren(iframe);
+    }
+
+    videoEmbeds.forEach((embed) => {
+      const play = embed.querySelector('.video-play');
+      if (play) play.addEventListener('click', (e) => { e.preventDefault(); mountVideo(embed, false); });
+    });
+
+    const autoEmbeds = [...videoEmbeds].filter((e) => e.hasAttribute('data-autoplay'));
+    if (autoEmbeds.length && !reduceMotion) {
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) { mountVideo(entry.target, true); io.unobserve(entry.target); }
+          });
+        }, { threshold: 0.4 });
+        autoEmbeds.forEach((e) => io.observe(e));
+      } else {
+        autoEmbeds.forEach((e) => mountVideo(e, true));
+      }
+    }
+  }
+
   // Home page "thank you sponsors" popup: shown once per browser session.
   const sponsorPopup = document.getElementById('sponsor-popup');
   if (sponsorPopup && typeof sponsorPopup.showModal === 'function') {
