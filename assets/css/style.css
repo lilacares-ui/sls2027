@@ -191,7 +191,7 @@ p { margin: 0 0 1em; color: #33404d; }
 }
 .nav-toggle span { width: 26px; height: 3px; background: var(--blue); border-radius: 2px; }
 
-@media (max-width: 1040px) {
+@media (max-width: 1100px) {
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute;
@@ -577,46 +577,6 @@ p { margin: 0 0 1em; color: #33404d; }
   .card.keynote-card { grid-template-columns: 1fr; gap: 28px; padding: 30px 24px; }
   .keynote-side { position: static; max-width: 280px; margin: 0 auto; width: 100%; }
 }
-
-/* ---------- Home page sponsor popup ---------- */
-.btn-ghost { background: transparent; color: var(--blue); border-color: var(--line); }
-.btn-ghost:hover { background: var(--fog); border-color: var(--blue); }
-dialog.popup {
-  position: fixed;
-  width: calc(100% - 32px);
-  max-width: 480px;
-  margin: auto;
-  padding: 48px 40px 38px;
-  border: none;
-  border-radius: var(--radius);
-  background: var(--white);
-  color: var(--ink);
-  text-align: center;
-  box-shadow: 0 24px 60px rgba(0,20,40,0.35);
-}
-dialog.popup[open] { animation: popup-in 0.25s ease-out; }
-dialog.popup::backdrop { background: rgba(0,27,56,0.62); }
-dialog.popup .eyebrow { justify-content: center; margin-bottom: 14px; }
-dialog.popup h2 { margin-bottom: 12px; }
-dialog.popup p:not(.eyebrow) { margin: 0 0 26px; }
-.popup-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.popup-close {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--blue);
-  font-size: 1.7rem;
-  line-height: 1;
-  cursor: pointer;
-}
-.popup-close:hover { background: var(--fog); }
-@keyframes popup-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { dialog.popup[open] { animation: none; } }
 
 /* ---------- Students page ---------- */
 section[id] { scroll-margin-top: 80px; }
