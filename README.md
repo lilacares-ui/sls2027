@@ -6,7 +6,7 @@ Static HTML/CSS/JS — no build step or dependencies.
 
 ## Structure
 
-- `index.html`, `students.html`, `site-visits.html`, `sponsors.html`, `about.html`, `contact.html`, `sponsorship.html` — the site's pages
+- `index.html`, `students.html`, `site-visits.html`, `sponsor.html`, `about.html`, `contact.html` — the site's pages
 - `assets/css/style.css` — all styles
 - `assets/js/main.js` — nav toggle, mailing-list signup, photo strip, sponsor photo carousels, video embeds, sponsorship-email copy fallback
 - `assets/js/mailing-list-setup.md` — how the mailing-list form is wired to a Google Sheet

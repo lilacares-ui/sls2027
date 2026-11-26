@@ -678,6 +678,13 @@ section[id] { scroll-margin-top: 80px; }
 .visit-back:hover { text-decoration: underline; }
 
 /* ---------- Sponsors page ---------- */
+.page-hero-split .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+@media (max-width: 900px) { .page-hero-split .wrap { grid-template-columns: 1fr; gap: 32px; } }
+.hero-cta { scroll-margin-top: 100px; padding: 36px 32px; border-radius: var(--radius); background: var(--coral); text-align: center; box-shadow: 0 0 0 6px rgba(255,111,97,0.28), 0 24px 54px rgba(0,0,0,0.42); }
+.hero-cta h2 { margin: 0 0 22px; color: var(--blue-dark); font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.hero-cta .btn { white-space: normal; text-align: center; justify-content: center; padding: 16px 24px; }
+.page-hero .hero-cta p.hero-cta-copy { max-width: none; margin: 14px 0 0; font-family: var(--mono); font-size: 0.74rem; color: var(--blue-dark); }
+.hero-cta-copy button { padding: 0; border: none; background: none; font: inherit; font-weight: 600; color: inherit; text-decoration: underline; cursor: pointer; }
 /* Tier sizing: Blue (smallest) < Bronze < Silver < Gold (largest). Each tier sets
    how wide its cards run and how big its logos get. */
 .sponsor-tier { --card-w: 880px; --logo-h: 140px; }
